@@ -1,0 +1,48 @@
+---
+title: "Storyboard"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(dplyr)
+library(ggplot2)
+```
+
+### Data
+
+```{r Data}
+knitr::kable(iris %>% sample_n(10))
+```
+
+***
+Este es el dataset utilizado en el analisis
+
+### Boxplot
+
+```{r}
+iris %>% 
+  ggplot(aes(x=Species, y=Sepal.Width,color=Species))+
+  geom_boxplot()
+```
+
+***
+Box plot sobre como esta distribuido el sepal length por specie
+
+### Histograma
+
+```{r}
+iris %>%  
+  ggplot(aes(x=Sepal.Width,
+             y=..density.., 
+             color=Species)) +
+  geom_histogram()+
+  geom_density()+
+  facet_wrap(.~Species)
+  
+```
+
+***
+Una explicación

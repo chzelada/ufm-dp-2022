@@ -1,0 +1,57 @@
+---
+title: "Tab en columna"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+
+
+```{r librerias}
+library(flexdashboard)
+library(dplyr)
+library(ggplot2)
+```
+
+Col 1
+------------------
+
+### Data set de iris
+
+```{r Data}
+knitr::kable(iris %>% sample_n(10))
+```
+
+
+
+Col 2 {.tabset}
+-------------------------
+
+
+### Sepal Width by Species
+```{r}
+iris %>% 
+  ggplot(aes(x=Species, y=Sepal.Width,color=Species))+
+  geom_boxplot()
+```
+
+
+### Histograma
+
+```{r}
+iris %>%  
+  ggplot(aes(x=Sepal.Width,
+             y=..density.., 
+             color=Species)) +
+  geom_histogram()+
+  geom_density()+
+  facet_wrap(.~Species)
+  
+```
+
+
+
+
+
+

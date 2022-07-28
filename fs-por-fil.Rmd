@@ -1,0 +1,54 @@
+---
+title: "Diseño por fila"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+
+```{r librerias}
+library(dplyr)
+library(ggplot2)
+```
+
+Col 1
+------------------
+
+### Data set de iris
+
+```{r Data}
+knitr::kable(iris %>% sample_n(50))
+```
+
+
+Col 2
+-------------------------
+
+
+### Sepal Width by Species
+```{r}
+iris %>% 
+  ggplot(aes(x=Species, y=Sepal.Width,color=Species))+
+  geom_boxplot()
+```
+
+
+### Histograma
+
+```{r}
+iris %>%  
+  ggplot(aes(x=Sepal.Width,
+             y=..density.., 
+             color=Species)) +
+  geom_histogram()+
+  geom_density()+
+  facet_wrap(.~Species)
+  
+```
+
+
+
+
+
+
