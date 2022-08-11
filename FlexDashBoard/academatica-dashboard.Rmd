@@ -121,7 +121,7 @@ videos %>%
 video_stats %>% 
   left_join(videos_metadata, by = c('id'='video_id')) %>% 
   select(id,title, description,viewCount,likeCount) %>% 
-  datatable()
+  DT::datatable()
 ```
 
 
