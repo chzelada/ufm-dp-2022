@@ -8,10 +8,10 @@ shinyUI(fluidPage(
     titlePanel("Graficas y mas"),
 
     # Sidebar with a slider input for number of bins
-    shiny::tabsetPanel(
+    tabsetPanel(
         tabPanel("Plot Interactions",
                  plotOutput("plot_click_options",
-                            click = "clk",
+                            click = "clk_data",
                             dblclick = "dclk",
                             hover = 'mhover',
                             brush = 'mbrush' ),
